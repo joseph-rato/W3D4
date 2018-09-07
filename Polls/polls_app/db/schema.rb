@@ -10,19 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_231532) do
+ActiveRecord::Schema.define(version: 2018_09_07_001802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answer_choices", force: :cascade do |t|
     t.integer "question_id", null: false
-    t.integer "user_id", null: false
     t.text "answer", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id", "user_id"], name: "index_answer_choices_on_question_id_and_user_id", unique: true
-    t.index ["user_id"], name: "index_answer_choices_on_user_id"
+    t.index ["question_id"], name: "index_answer_choices_on_question_id"
   end
 
   create_table "polls", force: :cascade do |t|
@@ -43,12 +41,10 @@ ActiveRecord::Schema.define(version: 2018_09_06_231532) do
 
   create_table "responses", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "question_id", null: false
     t.integer "answer_choice_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_choice_id"], name: "index_responses_on_answer_choice_id"
-    t.index ["question_id"], name: "index_responses_on_question_id"
     t.index ["user_id"], name: "index_responses_on_user_id"
   end
 
