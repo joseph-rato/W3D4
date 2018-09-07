@@ -4,8 +4,9 @@ def eighties_b_movies
   # Show the id, title, year, and score.
   Movie
     .select(:id, :title, :yr, :score)
-    .where('movies.yr BETWEEN 1980 AND 1989')
-    .where('movies.score BETWEEN 3 AND 5')
+    .where(yr: 1980..1989, score: 3..5)
+    # .where('movies.yr BETWEEN 1980 AND 1989')
+    # .where('movies.score BETWEEN 3 AND 5')
 
 end
 
